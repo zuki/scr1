@@ -26,8 +26,11 @@ parameter int unsigned          SCR1_CSR_MTVEC_BASE_VAL_BITS    = `SCR1_XLEN-SCR
 // Recommended core architecture configurations (modifiable)
 //-------------------------------------------------------------------------------
 //`define SCR1_CFG_RV32EC_MIN
-//`define SCR1_CFG_RV32IC_BASE
-`define SCR1_CFG_RV32IMC_MAX
+`define SCR1_CFG_RV32IC_BASE
+//`define SCR1_CFG_RV32IMC_MAX
+
+// use custom configuration
+`define SCR1_ARCH_CUSTOM
 
 //-------------------------------------------------------------------------------
 // Setting recommended configurations (READ-ONLY, do not modify)
@@ -95,7 +98,7 @@ parameter int unsigned          SCR1_CSR_MTVEC_BASE_VAL_BITS    = `SCR1_XLEN-SCR
 // Uncore configurable options (modifiable)
 //-------------------------------------------------------------------------------
 
-// `define SCR1_CFG_EXCL_UNCORE        // exclude DBGC, BRKM, IPIC (also set in SCR1_CFG_RV32EC_MIN)
+`define SCR1_CFG_EXCL_UNCORE        // exclude DBGC, BRKM, IPIC (also set in SCR1_CFG_RV32EC_MIN)
 
 `ifndef SCR1_CFG_EXCL_UNCORE
 
@@ -119,7 +122,8 @@ parameter int unsigned          SCR1_CSR_MTVEC_BASE_VAL_BITS    = `SCR1_XLEN-SCR
 `define SCR1_DMEM_AXI_REQ_BP        // bypass data memory AXI bridge request register
 `define SCR1_DMEM_AXI_RESP_BP       // bypass data memory AXI bridge response register
 
-`define SCR1_TCM_EN                 // enables tightly-coupled memory
+// undef TCM for lack of RAM
+//`define SCR1_TCM_EN                 // enables tightly-coupled memory
 
 //-------------------------------------------------------------------------------
 // Address constants
